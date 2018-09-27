@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="262.5" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardElements.TimetableController">
+   <children>
+      <Separator layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="724.0" />
+      <Separator layoutX="1.0" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="724.0" />
+
+
+      <Separator layoutX="120" layoutY="0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="263.0" prefWidth="10.0" />
+      <Separator layoutX="240.0" layoutY="0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="263.0" prefWidth="10.0" />
+      <Separator layoutX="360.0" layoutY="0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="263.0" prefWidth="10.0" />
+      <Separator layoutX="480.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="263.0" prefWidth="10.0" />
+      <Separator layoutX="600.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="263.0" prefWidth="10.0" />
+      <VBox layoutY="81.0" prefHeight="179.0" prefWidth="120.0">
+         <children>
+            <Label fx:id="P1T" alignment="CENTER" prefHeight="72.0" prefWidth="120.0" text="Lesson Tought" textAlignment="CENTER">
+               <font>
+                  <Font name="Ebrima" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="CT1" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Class Tought" />
+            <Label fx:id="EI1" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Extra Info" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <VBox layoutX="125.0" layoutY="81.0" prefHeight="179.0" prefWidth="120.0">
+         <children>
+            <Label fx:id="P2T" alignment="CENTER" prefHeight="72.0" prefWidth="120.0" text="Lesson Tought" textAlignment="CENTER">
+               <font>
+                  <Font name="Ebrima" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="CT2" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Class Tought" />
+            <Label fx:id="EI2" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Extra Info" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <VBox layoutX="245.0" layoutY="81.0" prefHeight="179.0" prefWidth="120.0">
+         <children>
+            <Label fx:id="P3T" alignment="CENTER" prefHeight="72.0" prefWidth="120.0" text="Lesson Tought" textAlignment="CENTER">
+               <font>
+                  <Font name="Ebrima" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="CT3" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Class Tought" />
+            <Label fx:id="EI3" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Extra Info" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <VBox layoutX="365.0" layoutY="81.0" prefHeight="179.0" prefWidth="120.0">
+         <children>
+            <Label fx:id="P4T" alignment="CENTER" prefHeight="72.0" prefWidth="120.0" text="Lesson Tought" textAlignment="CENTER">
+               <font>
+                  <Font name="Ebrima" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="CT4" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Class Tought" />
+            <Label fx:id="EI4" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Extra Info" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <VBox layoutX="485.0" layoutY="81.0" prefHeight="179.0" prefWidth="120.0">
+         <children>
+            <Label fx:id="P5T" alignment="CENTER" prefHeight="72.0" prefWidth="120.0" text="Lesson Tought" textAlignment="CENTER">
+               <font>
+                  <Font name="Ebrima" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="CT5" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Class Tought" />
+            <Label fx:id="EI5" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Extra Info" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <VBox layoutX="600.0" layoutY="81.0" prefHeight="179.0" prefWidth="120.0">
+         <children>
+            <Label fx:id="P6T" alignment="CENTER" prefHeight="72.0" prefWidth="120.0" text="Lesson Tought" textAlignment="CENTER">
+               <font>
+                  <Font name="Ebrima" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="CT6" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Class Tought" />
+            <Label fx:id="EI6" alignment="CENTER" prefHeight="0.0" prefWidth="120.0" text="Extra Info" textAlignment="CENTER" />
+         </children>
+      </VBox>
+      <Label alignment="CENTER" layoutX="10.0" layoutY="9.0" prefHeight="17.0" prefWidth="100.0" text="Period One" textAlignment="CENTER">
+         <font>
+            <Font name="Ebrima" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="135.0" layoutY="9.0" prefHeight="17.0" prefWidth="100.0" text="Period Two" textAlignment="CENTER">
+         <font>
+            <Font name="Ebrima" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="255.0" layoutY="9.0" prefHeight="17.0" prefWidth="100.0" text="Period Three" textAlignment="CENTER">
+         <font>
+            <Font name="Ebrima" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="375.0" layoutY="9.0" prefHeight="17.0" prefWidth="100.0" text="Period Four" textAlignment="CENTER">
+         <font>
+            <Font name="Ebrima" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="495.0" layoutY="9.0" prefHeight="17.0" prefWidth="100.0" text="Period Five" textAlignment="CENTER">
+         <font>
+            <Font name="Ebrima" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="610.0" layoutY="9.0" prefHeight="17.0" prefWidth="100.0" text="Period Six" textAlignment="CENTER">
+         <font>
+            <Font name="Ebrima" size="16.0" />
+         </font>
+      </Label>
+      <Pane layoutX="-6.0" layoutY="40.0" prefHeight="40.0" prefWidth="129.0" style="-fx-background-color: #333645;" />
+      <Pane layoutX="123.0" layoutY="40.0" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #333645;" />
+      <Pane layoutX="243.0" layoutY="40.0" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #333645;" />
+      <Pane layoutX="363.0" layoutY="40.0" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #333645;" />
+      <Pane layoutX="483.0" layoutY="40.0" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #333645;" />
+      <Pane layoutX="603.0" layoutY="40.0" prefHeight="40.0" prefWidth="129.0" style="-fx-background-color: #333645;" />
+   </children>
+</AnchorPane>

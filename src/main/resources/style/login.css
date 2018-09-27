@@ -1,0 +1,20 @@
+.parent{
+    -fx-background-color: #fff;
+}
+
+.sidebar{
+    -fx-background-color: #542a99;
+}
+
+.feilds{
+        -fx-background-color: transparent;
+        -fx-border-color: transparent;
+}
+
+.LoginButton{
+    -fx-background-color: #542a99;
+}
+
+.LoginButton:hover{
+    -fx-background-color: #6e3ebc;
+}

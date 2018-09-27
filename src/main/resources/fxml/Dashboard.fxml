@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="1024.0" stylesheets="@../style/Dashboard.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Dashboard">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="300.0" styleClass="sidebar">
+         <children>
+            <Label prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #542a99;" text="Teacher Panel" textFill="WHITE">
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+               <font>
+                  <Font name="Ebrima Bold" size="20.0" />
+               </font></Label>
+            <HBox id="Overview-Hbox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onOverviewClicked" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
+               <children>
+                  <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Dashboard%20Icons/Overview.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Overview" textFill="#7c8184">
+                     <font>
+                        <Font name="Calibri Light" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+            <HBox id="Classes-Hbox" alignment="CENTER_LEFT" layoutX="10.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onClassesClicked" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
+               <children>
+                  <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Dashboard%20Icons/Classes.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Classes" textFill="#7c8184">
+                     <font>
+                        <Font name="Calibri Light" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+            <HBox id="Timetable-Hbox" alignment="CENTER_LEFT" layoutX="10.0" layoutY="135.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onTimetableClicked" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
+               <children>
+                  <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Dashboard%20Icons/Timetable.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Timetable" textFill="#7c8184">
+                     <font>
+                        <Font name="Calibri Light" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+            <HBox id="Meetings-Hbox" alignment="CENTER_LEFT" layoutX="10.0" layoutY="185.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onMeetingsClicked" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
+               <children>
+                  <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Dashboard%20Icons/Meetings.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Meetings" textFill="#7c8184">
+                     <font>
+                        <Font name="Calibri Light" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+            <HBox id="Reports-Hbox" alignment="CENTER_LEFT" layoutX="10.0" layoutY="235.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onReportsClicked" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
+               <children>
+                  <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Dashboard%20Icons/Reports.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Reports" textFill="#7c8184">
+                     <font>
+                        <Font name="Calibri Light" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+            <HBox id="DatabaseManagment-Hbox" alignment="CENTER_LEFT" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onDatabasemanagementClicked" prefHeight="50.0" prefWidth="300.0" styleClass="btns">
+               <children>
+                  <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Dashboard%20Icons/DB%20management.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Database Managment" textFill="#7c8184">
+                     <font>
+                        <Font name="Calibri Light" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+            </HBox>
+         </children></VBox>
+      <VBox layoutX="300.0" prefHeight="600.0" prefWidth="724.0">
+         <children>
+            <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="724.0" style="-fx-background-color: #fff;">
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" color="#c9c9c9" height="10.0" radius="4.5" width="10.0" />
+               </effect>
+               <children>
+                  <Label layoutX="14.0" layoutY="29.0" text="Dashboard" textFill="#7c8184">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="262.5" prefWidth="724.0" />
+            <Pane fx:id="ttablepane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="262.5" prefWidth="724.0" />
+         </children></VBox>
+   </children>
+</AnchorPane>

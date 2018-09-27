@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="490.0" styleClass="parent" stylesheets="@../style/login.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+   <children>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="500.0" styleClass="sidebar">
+         <children>
+            <Label text="Welcome To" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label text="One Class" textFill="WHITE">
+               <font>
+                  <Font name="Impact" size="30.0" />
+               </font>
+            </Label>
+         </children></VBox>
+      <Pane layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="500.0" style="-fx-background-color: #fff;">
+         <children>
+            <Label layoutX="210.0" layoutY="83.0" prefHeight="40.0" prefWidth="80.0" text="USERNAME" textFill="#542a99">
+               <font>
+                  <Font name="Tw Cen MT Condensed" size="24.0" />
+               </font>
+            </Label>
+            <Separator layoutX="150.0" layoutY="156.0" prefWidth="200.0" style="-fx-background-color: #542a99;" />
+            <Label layoutX="210.0" layoutY="168.0" prefHeight="40.0" prefWidth="80.0" text="PASSWORD" textFill="#542a99">
+               <font>
+                  <Font name="Tw Cen MT Condensed" size="24.0" />
+               </font>
+            </Label>
+            <Separator layoutX="150.0" layoutY="241.0" prefWidth="200.0" style="-fx-background-color: #542a99;" />
+            <TextField fx:id="usernameInput" alignment="CENTER" layoutX="150.0" layoutY="132.0" prefHeight="25.0" prefWidth="200.0" promptText="Enter your username" styleClass="feilds" />
+            <PasswordField fx:id="passwordInput" alignment="CENTER" layoutX="150.0" layoutY="217.0" prefHeight="25.0" prefWidth="200.0" promptText="Enter your password" styleClass="feilds" />
+            <HBox layoutX="150.0" layoutY="287.0" onMouseClicked="#onLoginDown" prefHeight="40.0" prefWidth="200.0" styleClass="sidebar">
+               <children>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="200.0" styleClass="LoginButton" text="Log In" textFill="WHITE">
+                     <font>
+                        <Font name="Tw Cen MT Condensed" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children></Pane>
+   </children>
+	
+</AnchorPane>
