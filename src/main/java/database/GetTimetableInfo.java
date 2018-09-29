@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class GetTimetableInfo {
 
-    public static String DBPass = "7D2Disnowmine";
+    public static String DBPass = "//";
 
 
     //GETS TIMETABLE TITLES --------------------------------

@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 
 public class Networker
 {
-    public static String CONNECTION_STRING = "jdbc:mysql://localhost:8889/Registration";
+    public static String CONNECTION_STRING = "jdbc:mysql://127.0.0.1/simpsdb?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
     public static String USERNAME = "root";
-    public static String PASSWORD = "root";
+    public static String PASSWORD = "//";
 
     public static Connection connection;
 
