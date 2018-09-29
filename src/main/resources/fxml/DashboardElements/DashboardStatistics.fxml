@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="262.5" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatisticsController">
+   <children>
+      <StackPane prefHeight="263.0" prefWidth="242.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="242.0" text="Lateness" textFill="#333645">
+                     <font>
+                        <Font name="Ebrima" size="24.0" />
+                     </font>
+                  </Label>
+                  <StackPane prefHeight="215.0" prefWidth="242.0">
+                     <children>
+                        <Circle fill="#1f93ff00" radius="75.0" stroke="#333645" strokeType="INSIDE" strokeWidth="7.0" style="-fx-stroke-dash-array: 260; -fx-stroke-dash-offset: 150;" />
+                        <Label text="46%" textFill="#333645">
+                           <font>
+                              <Font name="Ebrima" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children></StackPane>
+      <StackPane layoutX="240" layoutY="0" prefHeight="263.0" prefWidth="242.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="242.0" text="School Year Fininished" textFill="#333645">
+                     <font>
+                        <Font name="Ebrima" size="24.0" />
+                     </font>
+                  </Label>
+                  <StackPane prefHeight="215.0" prefWidth="242.0">
+                     <children>
+                        <Circle fill="#1f93ff00" radius="75.0" stroke="#333645" strokeType="INSIDE" strokeWidth="7.0" style="-fx-stroke-dash-array: 360; -fx-stroke-dash-offset: 360;" />
+                        <Label text="26%" textFill="#333645">
+                           <font>
+                              <Font name="Ebrima" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+      <StackPane layoutX="482.0" layoutY="0" prefHeight="263.0" prefWidth="242.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="242.0" text="Food Wasted" textFill="#333645">
+                     <font>
+                        <Font name="Ebrima" size="24.0" />
+                     </font>
+                  </Label>
+                  <StackPane prefHeight="215.0" prefWidth="242.0">
+                     <children>
+                        <Circle fill="#1f93ff00" radius="75.0" stroke="#333645" strokeType="INSIDE" strokeWidth="7.0" />
+                        <Label text="100%" textFill="#333645">
+                           <font>
+                              <Font name="Ebrima" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

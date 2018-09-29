@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="262.5" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardElements.TimetableController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="262.5" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TimetableController">
    <children>
       <Separator layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="724.0" />
       <Separator layoutX="1.0" layoutY="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="724.0" />
@@ -18,7 +18,7 @@
       <Separator layoutX="360.0" layoutY="0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="263.0" prefWidth="10.0" />
       <Separator layoutX="480.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="263.0" prefWidth="10.0" />
       <Separator layoutX="600.0" layoutY="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="263.0" prefWidth="10.0" />
-      <VBox layoutY="81.0" prefHeight="179.0" prefWidth="120.0">
+      <VBox fx:id="VBMon" layoutY="81.0" prefHeight="179.0" prefWidth="120.0">
          <children>
             <Label fx:id="P1T" alignment="CENTER" prefHeight="72.0" prefWidth="120.0" text="Lesson Tought" textAlignment="CENTER">
                <font>

@@ -10,6 +10,7 @@
 
     <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
     <dependencies>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

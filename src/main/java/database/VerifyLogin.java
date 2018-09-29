@@ -11,7 +11,7 @@ public class VerifyLogin
 	{
 		try
 		{
-			Connection connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1/simpsdb?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", "root", "//");
+			Connection connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1/simpsdb?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", "root", "7D2Disnowmine");
 			
 			Statement state = connect.createStatement();
 			

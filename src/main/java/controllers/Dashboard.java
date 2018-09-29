@@ -1,6 +1,6 @@
 package controllers;
 
-import controllers.DashboardElements.TimetableController;
+import com.sun.glass.ui.Size;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,14 +10,56 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+
+import javafx.animation.*;
+import javafx.util.Duration;
+
 public class Dashboard {
 
     @FXML private Pane ttablepane;
+    @FXML private Pane statisticsPane;
+
+    public void initialize() {
+        LoadTimetable();
+    }
+
+    public static RotateTransition animation;
+
+    public void LoadCircle(){
+        Circle circ = new Circle(75);
+        circ.setFill(null);
+        circ.setStroke(Color.PURPLE);
+        circ.setStrokeWidth(2);
+
+        Arc arc = new Arc();
+        arc.setCenterX(150);
+        arc.setCenterY(150);
+        arc.setRadiusX(75.0f);
+        arc.setRadiusY(75.0f);
+        arc.setStartAngle(0);
+        arc.setLength(180);
+        arc.setFill(Color.RED);
+        arc.setStroke(Color.PURPLE);
+        arc.setStrokeWidth(7);
+
+        Shape shope = Shape.subtract(circ, arc);
+        shope.setFill(Color.PURPLE);
+
+        statisticsPane.getChildren().add(arc);
+
+        animation = new RotateTransition(Duration.seconds(1), arc);
+        animation.setByAngle(360);
+        animation.setInterpolator(Interpolator.EASE_BOTH);
+        animation.play();
+
+    }
 
     public void onOverviewClicked(){
 
         System.out.println("Overview Was Clicked");
-        LoadTimetable("DashboardTimetable");
+        LoadCircle();
     }
 
     public  void onClassesClicked(){
@@ -45,16 +87,24 @@ public class Dashboard {
         System.out.println("Database Management Was Clicked");
     }
 
-    public void LoadTimetable(String Timetable){
 
+    public void LoadTimetable(){
         Parent root;
         try{
             root = FXMLLoader.load(getClass().getResource("/fxml/DashboardElements/DashboardTimetable.fxml"));
             ttablepane.getChildren().add(root);
-            TimetableController.fillTimetable("Omar");
         } catch (IOException ex){
             Logger.getLogger(TimetableController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    public void LoadStatistics(){
+        Parent root;
+        try{
+            root = FXMLLoader.load(getClass().getResource("/fxml/DashboardElements/DashboardStatistics.fxml"));
+            statisticsPane.getChildren().add(root);
+        } catch (IOException ex){
+            Logger.getLogger(TimetableController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
