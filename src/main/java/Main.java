@@ -1,3 +1,4 @@
+import database.Networker;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +9,9 @@ public class Main extends Application
 {
 	//hello twat
 	@Override
-	public void start(Stage stage) throws Exception {
+	public void start(Stage stage) throws Exception
+	{
+		Networker.initiateConnection();
 		Parent root = FXMLLoader.load(getClass().getResource("fxml/Login.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
