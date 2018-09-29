@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<?import javafx.scene.control.Button?>
+<VBox fx:id="root" prefHeight="600.0" prefWidth="800.0" spacing="5" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardElements.RegisterController">
+    <padding>
+        <Insets topRightBottomLeft="10" />
+    </padding>
+    <HBox spacing="5">
+        <DatePicker fx:id="datePicker" />
+      <ChoiceBox value="Q" fx:id="classPicker">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Q"/>
+                  <String fx:value="P"/>
+              </FXCollections>
+          </items>
+      </ChoiceBox>
+        <Button fx:id="button"/>
+    </HBox>
+    <TableView fx:id="table" editable="true">
+        <columns>
+            <TableColumn text="Name" fx:id="nameCol" sortType="DESCENDING">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Monday">
+                <cellValueFactory>
+                    <PropertyValueFactory property="monday" />
+                </cellValueFactory>
+                <columns>
+                    <TableColumn text="P1">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="mp1" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P2">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="mp2" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P3">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="mp3" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P4">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="mp4" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P5">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="mp5" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableColumn>
+            <TableColumn text="Tuesday">
+                <cellValueFactory>
+                    <PropertyValueFactory property="tuesday" />
+                </cellValueFactory>
+                <columns>
+                    <TableColumn text="P1">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="tp1" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P2">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="tp2" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P3">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="tp3" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P4">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="tp4" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P5">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="tp5" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableColumn>
+            <TableColumn text="Wednesday">
+                <cellValueFactory>
+                    <PropertyValueFactory property="wednesday" />
+                </cellValueFactory>
+                <columns>
+                    <TableColumn text="P1">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="wp1" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P2">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="wp2" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P3">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="wp3" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P4">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="wp4" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P5">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="wp5" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableColumn>
+            <TableColumn text="Thursday">
+                <cellValueFactory>
+                    <PropertyValueFactory property="thursday" />
+                </cellValueFactory>
+                <columns>
+                    <TableColumn text="P1">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="thp1" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P2">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="thp2" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P3">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="thp3" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P4">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="thp4" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P5">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="thp5" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableColumn>
+            <TableColumn text="Friday">
+                <cellValueFactory>
+                    <PropertyValueFactory property="friday" />
+                </cellValueFactory>
+                <columns>
+                    <TableColumn text="P1">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="fp1" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P2">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="fp2" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P3">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="fp3" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P4">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="fp4" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="P5">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="fp5" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableColumn>
+        </columns>
+    </TableView>
+</VBox>
