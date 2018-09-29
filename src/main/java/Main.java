@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application
 {
-	//hello twat
 	@Override
 	public void start(Stage stage) throws Exception
 	{
