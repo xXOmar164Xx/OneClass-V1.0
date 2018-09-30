@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Day
 {
-    //private String id;
+    private String day;
+
     private String p1;
     private String p2;
     private String p3;
@@ -19,6 +20,25 @@ public class Day
         this.p3 = student.get(2);
         this.p4 = student.get(3);
         this.p5 = student.get(4);
+    }
+
+    public Day(String day, String p1, String p2, String p3, String p4, String p5)
+    {
+        this.day = day;
+
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+        this.p4 = p4;
+        this.p5 = p5;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public String getP1() {

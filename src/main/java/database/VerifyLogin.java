@@ -11,15 +11,13 @@ public class VerifyLogin
 	{
 		try
 		{
-			Connection connect = DriverManager.getConnection("jdbc:mysql://127.0.0.1/simpsdb?useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false", "root", "//");
-			
-			Statement state = connect.createStatement();
+			Statement state = Networker.connection.createStatement();
 			
 			ResultSet result = state.executeQuery(String.format("select * from taccounts where Username=\"%s\"", username));
 			
 			while (result.next()) 
 			{
-				if (result.getString(3).equals(password))
+				if (result.getString(2).equals(password))
 				{
 					return true;
 				}

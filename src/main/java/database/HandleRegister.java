@@ -10,10 +10,7 @@ import java.util.ArrayList;
 
 public class HandleRegister
 {
-    private static String connectionString = "jdbc:mysql://localhost:8889/Registration";
-    private static String password = "root";
-
-    public static ObservableList<Week> retreiveWeeksRegister(String weekStarting, String className) throws SQLException
+    public static ObservableList<Week> retrieveWeeksRegister(String weekStarting, String className) throws SQLException
     {
         long startTime = System.currentTimeMillis();
 
@@ -31,9 +28,12 @@ public class HandleRegister
 
             result2.next();
 
+            int id = result.getInt(1);
+
             String name = result2.getString(2) + ", " + result2.getString(1);
 
             ArrayList<Day> days = new ArrayList<>();
+
             for (int i = 0; i < 5; i++)
             {
                 ArrayList<String> a = new ArrayList<>();
@@ -45,14 +45,44 @@ public class HandleRegister
                 Day d = new Day(a);
                 days.add(d);
             }
-            Week w = new Week(days, name);
+            Week w = new Week(name, id, days);
             data.add(w);
         }
 
         long stopTime = System.currentTimeMillis();
         long runTime = stopTime - startTime;
-        System.out.println("Register loaded in time: " + (float)runTime/1000 + " seconds");
+        System.out.println("Register loaded in time: " + (float) runTime / 1000 + " seconds");
 
         return data;
+    }
+
+    public static void setEditedRegister(ObservableList<Week> newRegister, String weekStarting, String className) throws SQLException
+    {
+        long startTime = System.currentTimeMillis();
+
+        for (Week student : newRegister)
+        {
+            int id = student.getId();
+
+            ArrayList<Day> days = student.getDays();
+
+            for (Day day : days)
+            {
+                String d = day.getDay();
+
+                PreparedStatement pstate = Networker.connection.prepareStatement(String.format("UPDATE Register%s SET " + d + "P1=?, " + d + "P2=?, " + d + "P3=?, " + d + "P4=?, " + d + "P5=? WHERE StudentID=%d", weekStarting, id));
+                pstate.setString(1, day.getP1());
+                pstate.setString(2, day.getP2());
+                pstate.setString(3, day.getP3());
+                pstate.setString(4, day.getP4());
+                pstate.setString(5, day.getP5());
+
+                pstate.executeUpdate();
+            }
+        }
+
+        long stopTime = System.currentTimeMillis();
+        long runTime = stopTime - startTime;
+        System.out.println("Register saved in time: " + (float) runTime / 1000 + " seconds");
     }
 }

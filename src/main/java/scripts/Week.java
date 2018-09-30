@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Week
 {
+    private int id;
     private String name;
 
     private Day monday;
@@ -41,11 +42,14 @@ public class Week
     private String fp4;
     private String fp5;
 
-    public Week(ArrayList<Day> days, String name)
+    public Week(String name, int id, ArrayList<Day> days)
     {
         this.name = name;
+        this.id = id;
+
 
         this.monday = days.get(0);
+        this.monday.setDay("Mon");
         this.mp1 = monday.getP1();
         this.mp2 = monday.getP2();
         this.mp3 = monday.getP3();
@@ -53,6 +57,7 @@ public class Week
         this.mp5 = monday.getP5();
 
         this.tuesday = days.get(1);
+        this.tuesday.setDay("Tue");
         this.tp1 = tuesday.getP1();
         this.tp2 = tuesday.getP2();
         this.tp3 = tuesday.getP3();
@@ -60,6 +65,7 @@ public class Week
         this.tp5 = tuesday.getP5();
 
         this.wednesday = days.get(2);
+        this.wednesday.setDay("Wed");
         this.wp1 = wednesday.getP1();
         this.wp2 = wednesday.getP2();
         this.wp3 = wednesday.getP3();
@@ -67,6 +73,7 @@ public class Week
         this.wp5 = wednesday.getP5();
 
         this.thursday = days.get(3);
+        this.thursday.setDay("Thu");
         this.thp1 = thursday.getP1();
         this.thp2 = thursday.getP2();
         this.thp3 = thursday.getP3();
@@ -74,11 +81,115 @@ public class Week
         this.thp5 = thursday.getP5();
 
         this.friday = days.get(4);
+        this.friday.setDay("Fri");
         this.fp1 = friday.getP1();
         this.fp2 = friday.getP2();
         this.fp3 = friday.getP3();
         this.fp4 = friday.getP4();
         this.fp5 = friday.getP5();
+    }
+
+    public void setPeriod(int pos, String newValue) {
+        switch (pos) {
+            case 1:
+                this.mp1 = newValue;
+                break;
+            case 2:
+                this.mp2 = newValue;
+                break;
+            case 3:
+                this.mp3 = newValue;
+                break;
+            case 4:
+                this.mp4 = newValue;
+                break;
+            case 5:
+                this.mp5 = newValue;
+                break;
+            case 6:
+                this.tp1 = newValue;
+                break;
+            case 7:
+                this.tp2 = newValue;
+                break;
+            case 8:
+                this.tp3 = newValue;
+                break;
+            case 9:
+                this.tp4 = newValue;
+                break;
+            case 10:
+                this.tp5 = newValue;
+                break;
+            case 11:
+                this.wp1 = newValue;
+                break;
+            case 12:
+                this.wp2 = newValue;
+                break;
+            case 13:
+                this.wp3 = newValue;
+                break;
+            case 14:
+                this.wp4 = newValue;
+                break;
+            case 15:
+                this.wp5 = newValue;
+                break;
+            case 16:
+                this.thp1 = newValue;
+                break;
+            case 17:
+                this.thp2 = newValue;
+                break;
+            case 18:
+                this.thp3 = newValue;
+                break;
+            case 19:
+                this.thp4 = newValue;
+                break;
+            case 20:
+                this.thp5 = newValue;
+                break;
+            case 21:
+                this.fp1 = newValue;
+                break;
+            case 22:
+                this.fp2 = newValue;
+                break;
+            case 23:
+                this.fp3 = newValue;
+                break;
+            case 24:
+                this.fp4 = newValue;
+                break;
+            case 25:
+                this.fp5 = newValue;
+                break;
+        }
+
+        refreshDays();
+    }
+
+    private void refreshDays()
+    {
+        this.monday = new Day("Mon", mp1, mp2, mp3, mp4, mp5);
+        this.tuesday = new Day("Tue", tp1, tp2, tp3, tp4, tp5);
+        this.wednesday = new Day("Wed",wp1, wp2, wp3, wp4, wp5);
+        this.thursday = new Day("Thu", thp1, thp2, thp3, thp4, thp5);
+        this.friday = new Day("Fri", fp1, fp2, fp3, fp4, fp5);
+    }
+
+    public ArrayList<Day> getDays()
+    {
+        ArrayList<Day> days = new ArrayList<>();
+        days.add(monday);
+        days.add(tuesday);
+        days.add(wednesday);
+        days.add(thursday);
+        days.add(friday);
+
+        return days;
     }
 
     public String getName() {
@@ -87,6 +198,14 @@ public class Week
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMp1() {
@@ -247,14 +366,6 @@ public class Week
 
     public void setThp5(String thp5) {
         this.thp5 = thp5;
-    }
-
-    public Day getFriday() {
-        return friday;
-    }
-
-    public void setFriday(Day friday) {
-        this.friday = friday;
     }
 
     public String getFp1() {
