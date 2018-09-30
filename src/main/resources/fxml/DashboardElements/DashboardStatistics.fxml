@@ -44,7 +44,7 @@
                         <Font name="Ebrima" size="24.0" />
                      </font>
                   </Label>
-                  <StackPane prefHeight="215.0" prefWidth="242.0" />
+                  <StackPane fx:id="SSP3" prefHeight="215.0" prefWidth="242.0" />
                </children>
             </VBox>
          </children>
