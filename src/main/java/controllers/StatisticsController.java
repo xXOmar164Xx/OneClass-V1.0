@@ -3,7 +3,7 @@ package controllers;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
-import ring_loader_java.RingProgressIndicator;
+import ringLoader.RingProgressIndicator;
 
 public class StatisticsController {
 

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */ 
-package ring_loader_java;
+package ringLoader;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -37,7 +37,7 @@ import com.sun.javafx.css.converters.SizeConverter;
  */
 public class RingProgressIndicator extends ProgressCircleIndicator {
     public RingProgressIndicator() {
-        this.getStylesheets().add(RingProgressIndicator.class.getResource("/ring_loader_css/ringprogress.css").toExternalForm());
+        this.getStylesheets().add(RingProgressIndicator.class.getResource("/ringLoaderCSS/ringprogress.css").toExternalForm());
         this.getStyleClass().add("ringindicator");
     }
 

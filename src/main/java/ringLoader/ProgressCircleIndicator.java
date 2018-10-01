@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */ 
-package ring_loader_java;
+package ringLoader;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,7 +45,7 @@ abstract class ProgressCircleIndicator extends Control {
     private ReadOnlyBooleanWrapper indeterminate = new ReadOnlyBooleanWrapper(false);
 
     public ProgressCircleIndicator() {
-        this.getStylesheets().add(ProgressCircleIndicator.class.getResource("/ring_loader_css/circleprogress.css").toExternalForm());
+        this.getStylesheets().add(ProgressCircleIndicator.class.getResource("/ringLoaderCSS/circleprogress.css").toExternalForm());
     }
 
     public int getProgress() {

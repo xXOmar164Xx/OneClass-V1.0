@@ -17,7 +17,7 @@ public class VerifyLogin
 			
 			while (result.next()) 
 			{
-				if (result.getString(2).equals(password))
+				if (result.getString(3).equals(password))
 				{
 					return true;
 				}

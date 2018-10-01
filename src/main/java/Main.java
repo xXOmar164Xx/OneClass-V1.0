@@ -11,7 +11,7 @@ public class Main extends Application
 	public void start(Stage stage) throws Exception
 	{
 		Networker.initiateConnection();
-		Parent root = FXMLLoader.load(getClass().getResource("fxml/Dashboard.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("fxml/Login.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("Registration");

@@ -21,6 +21,7 @@ public class Dashboard {
 
     public void onOverviewClicked(){
         ClearMain();
+        OverviewMerge();
     }
 
     public  void onClassesClicked(){
@@ -35,7 +36,7 @@ public class Dashboard {
 
     public void onMeetingsClicked(){
         ClearMain();
-        System.out.println("Meetings Was Clicked");
+        MeetingsMerge();
     }
 
     public void onReportsClicked(){
@@ -98,5 +99,15 @@ public class Dashboard {
 
         BasePane.getChildren().add(OM_Main_Pane);
         currentPannel = "Overview";
+    }
+
+    public void MeetingsMerge(){
+        Parent root;
+        try{
+            root = FXMLLoader.load(getClass().getResource("/fxml/DashboardElements/Meetings.fxml"));
+            BasePane.getChildren().add(root);
+        } catch (IOException ex){
+            Logger.getLogger(TimetableController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
