@@ -1,34 +1,39 @@
 package controllers.DashboardElements;
 
+import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import database.HandleRegister;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import scripts.Week;
 import windows.Popup;
-
 import java.time.LocalDate;
 import java.time.Year;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class RegisterController
 {
-    @FXML VBox root;
+    @FXML BorderPane root;
+    @FXML VBox studentInfoPanel;
     @FXML TableView<Week> table;
 
     @FXML DatePicker datePicker;
     @FXML ChoiceBox classPicker;
     @FXML Button resetButton;
-
-    private ObservableList<Week> saveValue;
-
-    private boolean saved=true;
+    @FXML ListView studentProperties;
 
     public void initialize()
     {
+        table.getSelectionModel().setCellSelectionEnabled(true);
+
+        table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         datePicker.setShowWeekNumbers(false);
 
         datePicker.setValue(LocalDate.now());
@@ -39,35 +44,49 @@ public class RegisterController
 
         resetButton.setOnAction(event -> {updateRegisterView();});
 
-        for (int i = 1; i < 6; i++)
+        table.setOnKeyPressed(new EventHandler<KeyEvent>()
         {
-            for (int j = 0; j < 5; j++)
+            @Override
+            public void handle(javafx.scene.input.KeyEvent event)
             {
-                TableColumn col = table.getColumns().get(i).getColumns().get(j);
-                col.setCellFactory(TextFieldTableCell.forTableColumn());
-
-                col.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent>()
+                table.requestFocus();
+                if (event.getCode() == KeyCode.ENTER)
                 {
-                    @Override
-                    public void handle(TableColumn.CellEditEvent event)
+                    table.requestFocus();
+                    table.getSelectionModel().select(table.getSelectionModel().getSelectedIndex() + 1);
+                    table.getFocusModel().focus(table.getSelectionModel().getFocusedIndex() + 1);
+                }
+                else if (event.getCode().isLetterKey())
+                {
+                    table.requestFocus();
+                    ObservableList<TablePosition> positions = table.getSelectionModel().getSelectedCells();
+                    ObservableList<Week> data = table.getItems();
+                    for (TablePosition pos : positions)
                     {
-                        TablePosition pos = event.getTablePosition();
-                        ObservableList<Week> data = table.getItems();
-                        if (event.getNewValue().toString().length() == 1)
-                        {
-                            data.get(pos.getRow()).setPeriod(pos.getColumn(), (String) event.getNewValue());
-                            saved = false;
-                        }
-                        else
-                        {
-                            Popup.AlertBox("Invalid Input!");
-                        }
-                        table.setItems(data);
-                        table.refresh();
+                        data.get(Math.max(0, pos.getRow())).setPeriod(Math.max(0, pos.getColumn()), event.getText());
                     }
-                });
+                    table.setItems(data);
+                    table.refresh();
+                }
             }
-        }
+        });
+
+        table.skinProperty().addListener((obs, oldSkin, newSkin) ->
+        {
+            final TableHeaderRow header = (TableHeaderRow) table.lookup("TableHeaderRow");
+            header.reorderingProperty().addListener((o, oldVal, newVal) -> header.setReordering(false));
+        });
+
+        table.getFocusModel().focusedCellProperty().addListener(((observable, oldValue, newValue) ->
+        {
+            try
+            {
+                table.requestFocus();
+                TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
+                updateStudentProperties(table.getItems().get(pos.getRow()).getId());
+            }
+            catch (Exception e) { }
+        }));
 
         updateRegisterView();
     }
@@ -77,7 +96,6 @@ public class RegisterController
         try
         {
             table.setItems(HandleRegister.retrieveWeeksRegister(getWeekStarting(), classPicker.getValue().toString()));
-            saveValue = table.getItems();
         }
         catch (Exception e)
         {
@@ -86,13 +104,48 @@ public class RegisterController
         }
     }
 
+    private void updateStudentProperties(int studentID)
+    {
+        try
+        {
+            ArrayList a = HandleRegister.retrieveStudentInfo(studentID);
+            studentProperties.getItems().set(0, a.get(0));
+            studentProperties.getItems().set(1, a.get(1));
+            studentProperties.getItems().set(2, a.get(2));
+            studentProperties.getItems().set(3, a.get(3));
+            studentProperties.getItems().set(4, a.get(4));
+            studentProperties.getItems().set(5, a.get(5));
+        }
+        catch (Exception e)
+        {
+            e.getMessage();
+        }
+    }
+
+    @FXML private void getSelectedStudents()
+    {
+        table.requestFocus();
+
+        ArrayList<Integer> studentIDs = new ArrayList<>();
+
+        ObservableList<TablePosition> cellsSelected =table.getSelectionModel().getSelectedCells();
+
+        for (TablePosition pos : cellsSelected)
+        {
+            studentIDs.add(table.getItems().get(pos.getRow()).getId());
+        }
+    }
+
+    @FXML private void hideStudentInfo() { studentProperties.setVisible(false); studentInfoPanel.setPrefWidth(20);}
+
+    @FXML private void showStudentInfo() { studentProperties.setVisible(true); studentInfoPanel.setPrefWidth(270);}
+
     @FXML
     private void saveRegisterView()
     {
         try
         {
             HandleRegister.setEditedRegister(table.getItems(), getWeekStarting(), classPicker.getValue().toString());
-            saved=false;
         }
         catch (Exception e)
         {

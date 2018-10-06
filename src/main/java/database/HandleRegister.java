@@ -18,19 +18,13 @@ public class HandleRegister
 
         Statement state = Networker.connection.createStatement();
 
-        ResultSet result = state.executeQuery(String.format("SELECT * FROM Register%s WHERE StudentID IN (SELECT StudentID FROM Students WHERE Class=\'%s\')", weekStarting, className));
+        ResultSet result = state.executeQuery(String.format("SELECT * FROM register%s AS r JOIN students AS s ON r.StudentID=s.StudentID WHERE s.Class=\'%s\' ORDER BY s.Surname,s.Name ASC", weekStarting, className));
 
         while (result.next())
         {
-            Statement state2 = Networker.connection.createStatement();
-
-            ResultSet result2 = state2.executeQuery(String.format("SELECT Name, Surname FROM Students WHERE StudentID=%d", result.getInt(1)));
-
-            result2.next();
-
             int id = result.getInt(1);
 
-            String name = result2.getString(2) + ", " + result2.getString(1);
+            String name = result.getString(29) + ", " + result.getString(28);
 
             ArrayList<Day> days = new ArrayList<>();
 
@@ -70,7 +64,7 @@ public class HandleRegister
             {
                 String d = day.getDay();
 
-                PreparedStatement pstate = Networker.connection.prepareStatement(String.format("UPDATE Register%s SET " + d + "P1=?, " + d + "P2=?, " + d + "P3=?, " + d + "P4=?, " + d + "P5=? WHERE StudentID=%d", weekStarting, id));
+                PreparedStatement pstate = Networker.connection.prepareStatement(String.format("UPDATE register%s SET " + d + "P1=?, " + d + "P2=?, " + d + "P3=?, " + d + "P4=?, " + d + "P5=? WHERE StudentID=%d", weekStarting, id));
                 pstate.setString(1, day.getP1());
                 pstate.setString(2, day.getP2());
                 pstate.setString(3, day.getP3());
@@ -84,5 +78,24 @@ public class HandleRegister
         long stopTime = System.currentTimeMillis();
         long runTime = stopTime - startTime;
         System.out.println("Register saved in time: " + (float) runTime / 1000 + " seconds");
+    }
+
+    public static ArrayList<Object> retrieveStudentInfo(int studentID) throws SQLException
+    {
+        Statement state = Networker.connection.createStatement();
+
+        ResultSet result = state.executeQuery(String.format("SELECT * FROM students WHERE StudentID=%d", studentID));
+
+        result.next();
+
+        ArrayList genericStudentInfo = new ArrayList<Object>();
+        genericStudentInfo.add(result.getString(2));
+        genericStudentInfo.add(result.getString(3));
+        genericStudentInfo.add(result.getString(4));
+        genericStudentInfo.add(result.getInt(5));
+        genericStudentInfo.add(result.getInt(6));
+        genericStudentInfo.add(result.getInt(7));
+
+        return genericStudentInfo;
     }
 }

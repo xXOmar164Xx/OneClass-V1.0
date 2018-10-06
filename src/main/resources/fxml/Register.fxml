@@ -6,190 +6,211 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox fx:id="root" prefHeight="600.0" prefWidth="800.0" spacing="5" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardElements.RegisterController">
-    <padding>
-        <Insets topRightBottomLeft="10" />
-    </padding>
-    <HBox spacing="5">
-        <DatePicker fx:id="datePicker" />
-      <ChoiceBox fx:id="classPicker" value="Q">
-          <items>
-              <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="Q" />
-                  <String fx:value="P" />
-              </FXCollections>
-          </items>
-      </ChoiceBox>
-        <Button text="Reset Changes" fx:id="resetButton"/>
-    </HBox>
-    <HBox spacing="5">
-        <TableView fx:id="table" editable="true" prefHeight="400.0" prefWidth="614.0" HBox.hgrow="ALWAYS">
+<BorderPane fx:id="root" prefHeight="600.0" prefWidth="800.0" stylesheets="@../style/Register.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardElements.RegisterController">
+    <top>
+        <VBox spacing="5" styleClass="ribbon">
+            <padding>
+                <Insets topRightBottomLeft="10" />
+            </padding>
+            <HBox><Label text="Register"><font><Font size="18" /></font></Label></HBox>
+            <HBox spacing="5" VBox.vgrow="SOMETIMES">
+                <DatePicker fx:id="datePicker" />
+                <ChoiceBox fx:id="classPicker" value="Q">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Q" />
+                            <String fx:value="P" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+                <Button onAction="#saveRegisterView" text="Save" />
+                <Button fx:id="resetButton" text="Reset Changes" />
+                <Button fx:id="addMeritButton" text="Add Merit" />
+                <Button fx:id="addDemeritButton" text="Add Demerit" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <StackPane styleClass="background">
+            <padding>
+                <Insets topRightBottomLeft="5" />
+            </padding>
+        <TableView fx:id="table" editable="true" prefHeight="508.0" prefWidth="546.0" HBox.hgrow="ALWAYS">
+            <padding><Insets topRightBottomLeft="0" /> </padding>
             <columns>
-                <TableColumn fx:id="nameCol" sortType="DESCENDING" text="Name">
+                <TableColumn fx:id="nameCol" prefWidth="166.0" sortType="DESCENDING" text="Name">
                     <cellValueFactory>
                         <PropertyValueFactory property="name" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn text="Monday">
+                <TableColumn prefWidth="192.0" text="Monday">
                     <cellValueFactory>
                         <PropertyValueFactory property="monday" />
                     </cellValueFactory>
                     <columns>
-                        <TableColumn text="P1">
+                        <TableColumn prefWidth="50.0" text="P1">
                             <cellValueFactory>
                                 <PropertyValueFactory property="mp1" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P2">
+                        <TableColumn prefWidth="50.0" text="P2">
                             <cellValueFactory>
                                 <PropertyValueFactory property="mp2" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P3">
+                        <TableColumn prefWidth="50.0" text="P3">
                             <cellValueFactory>
                                 <PropertyValueFactory property="mp3" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P4">
+                        <TableColumn prefWidth="50.0" text="P4">
                             <cellValueFactory>
                                 <PropertyValueFactory property="mp4" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P5">
+                        <TableColumn prefWidth="50.0" text="P5">
                             <cellValueFactory>
                                 <PropertyValueFactory property="mp5" />
                             </cellValueFactory>
                         </TableColumn>
                     </columns>
                 </TableColumn>
-                <TableColumn text="Tuesday">
+                <TableColumn prefWidth="50.0" text="Tuesday">
                     <cellValueFactory>
                         <PropertyValueFactory property="tuesday" />
                     </cellValueFactory>
                     <columns>
-                        <TableColumn text="P1">
+                        <TableColumn prefWidth="50.0" text="P1">
                             <cellValueFactory>
                                 <PropertyValueFactory property="tp1" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P2">
+                        <TableColumn prefWidth="50.0" text="P2">
                             <cellValueFactory>
                                 <PropertyValueFactory property="tp2" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P3">
+                        <TableColumn prefWidth="50.0" text="P3">
                             <cellValueFactory>
                                 <PropertyValueFactory property="tp3" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P4">
+                        <TableColumn prefWidth="50.0" text="P4">
                             <cellValueFactory>
                                 <PropertyValueFactory property="tp4" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P5">
+                        <TableColumn prefWidth="50.0" text="P5">
                             <cellValueFactory>
                                 <PropertyValueFactory property="tp5" />
                             </cellValueFactory>
                         </TableColumn>
                     </columns>
                 </TableColumn>
-                <TableColumn text="Wednesday">
+                <TableColumn prefWidth="50.0" text="Wednesday">
                     <cellValueFactory>
                         <PropertyValueFactory property="wednesday" />
                     </cellValueFactory>
                     <columns>
-                        <TableColumn text="P1">
+                        <TableColumn prefWidth="50.0" text="P1">
                             <cellValueFactory>
                                 <PropertyValueFactory property="wp1" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P2">
+                        <TableColumn prefWidth="50.0" text="P2">
                             <cellValueFactory>
                                 <PropertyValueFactory property="wp2" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P3">
+                        <TableColumn prefWidth="50.0" text="P3">
                             <cellValueFactory>
                                 <PropertyValueFactory property="wp3" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P4">
+                        <TableColumn prefWidth="50.0" text="P4">
                             <cellValueFactory>
                                 <PropertyValueFactory property="wp4" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P5">
+                        <TableColumn prefWidth="50.0" text="P5">
                             <cellValueFactory>
                                 <PropertyValueFactory property="wp5" />
                             </cellValueFactory>
                         </TableColumn>
                     </columns>
                 </TableColumn>
-                <TableColumn text="Thursday">
+                <TableColumn prefWidth="50.0" text="Thursday">
                     <cellValueFactory>
                         <PropertyValueFactory property="thursday" />
                     </cellValueFactory>
                     <columns>
-                        <TableColumn text="P1">
+                        <TableColumn prefWidth="50.0" text="P1">
                             <cellValueFactory>
                                 <PropertyValueFactory property="thp1" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P2">
+                        <TableColumn prefWidth="50.0" text="P2">
                             <cellValueFactory>
                                 <PropertyValueFactory property="thp2" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P3">
+                        <TableColumn prefWidth="50.0" text="P3">
                             <cellValueFactory>
                                 <PropertyValueFactory property="thp3" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P4">
+                        <TableColumn prefWidth="50.0" text="P4">
                             <cellValueFactory>
                                 <PropertyValueFactory property="thp4" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P5">
+                        <TableColumn prefWidth="50.0" text="P5">
                             <cellValueFactory>
                                 <PropertyValueFactory property="thp5" />
                             </cellValueFactory>
                         </TableColumn>
                     </columns>
                 </TableColumn>
-                <TableColumn text="Friday">
+                <TableColumn prefWidth="50.0" text="Friday">
                     <cellValueFactory>
                         <PropertyValueFactory property="friday" />
                     </cellValueFactory>
                     <columns>
-                        <TableColumn text="P1">
+                        <TableColumn prefWidth="50.0" text="P1">
                             <cellValueFactory>
                                 <PropertyValueFactory property="fp1" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P2">
+                        <TableColumn prefWidth="50.0" text="P2">
                             <cellValueFactory>
                                 <PropertyValueFactory property="fp2" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P3">
+                        <TableColumn prefWidth="50.0" text="P3">
                             <cellValueFactory>
                                 <PropertyValueFactory property="fp3" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P4">
+                        <TableColumn prefWidth="50.0" text="P4">
                             <cellValueFactory>
                                 <PropertyValueFactory property="fp4" />
                             </cellValueFactory>
                         </TableColumn>
-                        <TableColumn text="P5">
+                        <TableColumn prefWidth="50.0" text="P5">
                             <cellValueFactory>
                                 <PropertyValueFactory property="fp5" />
                             </cellValueFactory>
@@ -198,17 +219,31 @@
                 </TableColumn>
             </columns>
         </TableView>
-        <!--<VBox prefHeight="400.0" prefWidth="60.0" HBox.hgrow="ALWAYS" spacing="4.4">
-            <Separator/>
-            <Separator/>
-            <Label text="Register">
+        </StackPane>
+    </center>
+
+    <right>
+        <VBox fx:id="studentInfoPanel" prefHeight="508.0" prefWidth="270.0" spacing="10" styleClass="sideBar" HBox.hgrow="SOMETIMES">
+            <padding>
+                <Insets topRightBottomLeft="10" />
+            </padding>
+            <Label text="Student Info">
                 <font>
-                   <Font size="14.0" />
+                    <Font size="14" />
                 </font>
             </Label>
-            <Separator/>
-            <Separator/>
-            <ListView/>
-        </VBox>-->
-    </HBox>
-</VBox>
+            <HBox spacing="5">
+                <Button onAction="#showStudentInfo" text="Show" />
+                <Button onAction="#hideStudentInfo" text="Hide" />
+            </HBox>
+            <ListView fx:id="studentProperties" VBox.vgrow="ALWAYS">
+                <String fx:value="Name: " />
+                <String fx:value="Surname: " />
+                <String fx:value="Form Class: " />
+                <String fx:value="Year Group: " />
+                <String fx:value="Merits: " />
+                <String fx:value="Dmerits: " />
+            </ListView>
+        </VBox>
+    </right>
+</BorderPane>

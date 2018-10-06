@@ -1,7 +1,5 @@
 package database;
 
-import java.sql.*;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
