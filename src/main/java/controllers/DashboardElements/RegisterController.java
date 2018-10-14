@@ -6,12 +6,16 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import scripts.Week;
 import windows.Popup;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Year;
 import java.time.format.DateTimeFormatter;
@@ -26,6 +30,7 @@ public class RegisterController
     @FXML DatePicker datePicker;
     @FXML ChoiceBox classPicker;
     @FXML Button resetButton;
+    @FXML Button hideStudentProperties;
     @FXML ListView studentProperties;
 
     public void initialize()
@@ -38,25 +43,18 @@ public class RegisterController
 
         datePicker.setValue(LocalDate.now());
 
-        datePicker.valueProperty().addListener(((observable, oldValue, newValue) -> {saveRegisterView();updateRegisterView();}));
+        datePicker.valueProperty().addListener(((observable, oldValue, newValue) -> {saveRegisterView();updateRegisterView();datePicker.setValue(newValue);}));
 
         classPicker.valueProperty().addListener(((observable, oldValue, newValue) -> {saveRegisterView();updateRegisterView();}));
 
         resetButton.setOnAction(event -> {updateRegisterView();});
 
-        table.setOnKeyPressed(new EventHandler<KeyEvent>()
-        {
+        table.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(javafx.scene.input.KeyEvent event)
             {
                 table.requestFocus();
-                if (event.getCode() == KeyCode.ENTER)
-                {
-                    table.requestFocus();
-                    table.getSelectionModel().select(table.getSelectionModel().getSelectedIndex() + 1);
-                    table.getFocusModel().focus(table.getSelectionModel().getFocusedIndex() + 1);
-                }
-                else if (event.getCode().isLetterKey())
+                if (event.getCode().isLetterKey())
                 {
                     table.requestFocus();
                     ObservableList<TablePosition> positions = table.getSelectionModel().getSelectedCells();
@@ -82,10 +80,14 @@ public class RegisterController
             try
             {
                 table.requestFocus();
-                TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
-                updateStudentProperties(table.getItems().get(pos.getRow()).getId());
+
+                if (table.getSelectionModel().getSelectedCells().size() > 0)
+                {
+                    TablePosition pos = table.getSelectionModel().getSelectedCells().get(0);
+                    updateStudentProperties(table.getItems().get(pos.getRow()).getId());
+                }
             }
-            catch (Exception e) { }
+            catch (Exception e) { e.printStackTrace(); }
         }));
 
         updateRegisterView();
@@ -95,6 +97,7 @@ public class RegisterController
     {
         try
         {
+            //HandleRegister.createWeekTable(getWeekStarting());
             table.setItems(HandleRegister.retrieveWeeksRegister(getWeekStarting(), classPicker.getValue().toString()));
         }
         catch (Exception e)
@@ -109,20 +112,21 @@ public class RegisterController
         try
         {
             ArrayList a = HandleRegister.retrieveStudentInfo(studentID);
-            studentProperties.getItems().set(0, a.get(0));
+            ((ImageView)((HBox)studentProperties.getItems().get(0)).getChildren().get(0)).setImage((Image) a.get(0));
             studentProperties.getItems().set(1, a.get(1));
             studentProperties.getItems().set(2, a.get(2));
             studentProperties.getItems().set(3, a.get(3));
             studentProperties.getItems().set(4, a.get(4));
             studentProperties.getItems().set(5, a.get(5));
+            studentProperties.getItems().set(6, a.get(6));
         }
         catch (Exception e)
         {
-            e.getMessage();
+            e.printStackTrace();
         }
     }
 
-    @FXML private void getSelectedStudents()
+    @FXML private ArrayList<Integer> getSelectedStudents()
     {
         table.requestFocus();
 
@@ -134,11 +138,13 @@ public class RegisterController
         {
             studentIDs.add(table.getItems().get(pos.getRow()).getId());
         }
+
+        return studentIDs;
     }
 
-    @FXML private void hideStudentInfo() { studentProperties.setVisible(false); studentInfoPanel.setPrefWidth(20);}
+    @FXML private void hideStudentInfo() { studentProperties.setVisible(false); studentInfoPanel.setPrefWidth(0);hideStudentProperties.setVisible(false);}
 
-    @FXML private void showStudentInfo() { studentProperties.setVisible(true); studentInfoPanel.setPrefWidth(270);}
+    @FXML private void showStudentInfo() { studentProperties.setVisible(true); studentInfoPanel.setPrefWidth(270);hideStudentProperties.setVisible(true);}
 
     @FXML
     private void saveRegisterView()
@@ -187,5 +193,25 @@ public class RegisterController
         weekStarting = Year.of(datePicker.getValue().getYear()).atDay(datePicker.getValue().getDayOfYear() - daysToSubtract);
 
         return (weekStarting.format(DateTimeFormatter.ofPattern("ddMMyy")));
+    }
+
+    @FXML private void addMerit()
+    {
+        try
+        {
+            for (Integer studentId : getSelectedStudents())
+                HandleRegister.addMerit(studentId, 1);
+        }
+        catch (SQLException e) { e.printStackTrace(); }
+    }
+
+    @FXML private void addDemerit()
+    {
+        try
+        {
+            for (Integer studentId : getSelectedStudents())
+                HandleRegister.addDemerit(studentId, 1);
+        }
+        catch (SQLException e) { e.printStackTrace(); }
     }
 }

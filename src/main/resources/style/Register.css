@@ -19,6 +19,13 @@
     -fx-background-color: #232933;
 }
 
+.separator:horizontal .line
+{
+    -fx-background-color:white;
+    -fx-border-color:#677d93;
+    -fx-border-width:0.1px;
+}
+
 .background
 {
     -fx-background-color: #2e3542;
@@ -26,30 +33,30 @@
 
 .choice-box,
 .choice-box .context-menu,
+.text-field,
 .button
 {
     -fx-background-color: linear-gradient(to top, #414c60, #46536b);
     -fx-text-fill:white;
-    -fx-background-radius:0;
-}
-
-.text-field
-{
--fx-background-radius:0;
+    -fx-background-radius:15;
 }
 
 .choice-box:hover,
-.choice-box .context-menu:hover,
 .button:hover
 {
     -fx-background-color: linear-gradient(to top, #677d93, #7b8daa);
     -fx-text-fill:white;
 }
 
-.choice-box .menu-item:hover,
+.choice-box .context-menu
+{
+    -fx-padding:0 0 0 0;
+}
+
 .choice-box .menu-item:focused
 {
     -fx-background-color: linear-gradient(to top, #677d93, #7b8daa);
+    -fx-background-radius:15;
 }
 
 .separator .line
@@ -62,7 +69,7 @@
    ====================== */
 
 * {
-    -fx-column-header-color: #542a99;
+    -fx-column-header-color: linear-gradient(to top, #542a99, #6336c4);
     -fx-even-row-color: #f4f8ff;
     -fx-odd-row-color: #ffffff;
     -fx-table-text-color: #000000;
@@ -90,7 +97,7 @@
 .table-view .column-header,
 .table-view .column-header .label
 {
-    -fx-background-color: linear-gradient(to top, -fx-column-header-color, #6336c4);
+    -fx-background-color: -fx-column-header-color;
     -fx-border-color: #3e2184;
     -fx-border-width: 0.1px;
     -fx-text-fill: white;
@@ -100,10 +107,11 @@
    ==== Date picker styles ====
    ============================ */
 
-.date-picker
+.date-picker,
+.date-picker > .arrow-button
 {
     -fx-background-color: linear-gradient(to top, #414c60, #46536b);
-    -fx-background-radius:0;
+    -fx-background-radius:15;
 }
 
 .date-picker > .arrow-button,
@@ -171,4 +179,9 @@
 {
     -fx-background-color: linear-gradient(to top, #677d93, #7b8daa);
     -fx-background-radius: 15px;
+}
+
+.date-cell.selected
+{
+    -fx-background-color:#363f4f;
 }

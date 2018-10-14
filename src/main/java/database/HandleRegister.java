@@ -2,9 +2,15 @@ package database;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+
 import scripts.Day;
 import scripts.Week;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -80,7 +86,7 @@ public class HandleRegister
         System.out.println("Register saved in time: " + (float) runTime / 1000 + " seconds");
     }
 
-    public static ArrayList<Object> retrieveStudentInfo(int studentID) throws SQLException
+    public static ArrayList<Object> retrieveStudentInfo(int studentID) throws SQLException, IOException
     {
         Statement state = Networker.connection.createStatement();
 
@@ -88,7 +94,16 @@ public class HandleRegister
 
         result.next();
 
-        ArrayList genericStudentInfo = new ArrayList<Object>();
+        ResultSet result2 = Networker.connection.createStatement().executeQuery(String.format("SELECT Image FROM sImages WHERE StudentID=%d", studentID));
+
+        result2.next();
+
+        BufferedImage bufferedImage = ImageIO.read(result2.getBinaryStream("Image"));
+
+        Image imageFinal = SwingFXUtils.toFXImage(bufferedImage, null);
+
+        ArrayList genericStudentInfo = new ArrayList();
+        genericStudentInfo.add(imageFinal);
         genericStudentInfo.add(result.getString(2));
         genericStudentInfo.add(result.getString(3));
         genericStudentInfo.add(result.getString(4));
@@ -97,5 +112,67 @@ public class HandleRegister
         genericStudentInfo.add(result.getInt(7));
 
         return genericStudentInfo;
+    }
+
+    public static void createWeekTable(String weekStarting) throws SQLException
+    {
+        Statement state = Networker.connection.createStatement();
+
+        String sql = "CREATE TABLE `register%s` (\n" +
+                "  `StudentID` int(11) NOT NULL,\n" +
+                "  `MonP1` varchar(1) DEFAULT '',\n" +
+                "  `MonP2` varchar(1) DEFAULT '',\n" +
+                "  `MonP3` varchar(1) DEFAULT '',\n" +
+                "  `MonP4` varchar(1) DEFAULT '',\n" +
+                "  `MonP5` varchar(1) DEFAULT '',\n" +
+                "  `TueP1` varchar(1) DEFAULT '',\n" +
+                "  `TueP2` varchar(1) DEFAULT '',\n" +
+                "  `TueP3` varchar(1) DEFAULT '',\n" +
+                "  `TueP4` varchar(1) DEFAULT '',\n" +
+                "  `TueP5` varchar(1) DEFAULT '',\n" +
+                "  `WedP1` varchar(1) DEFAULT '',\n" +
+                "  `WedP2` varchar(1) DEFAULT '',\n" +
+                "  `WedP3` varchar(1) DEFAULT '',\n" +
+                "  `WedP4` varchar(1) DEFAULT '',\n" +
+                "  `WedP5` varchar(1) DEFAULT '',\n" +
+                "  `ThuP1` varchar(1) DEFAULT '',\n" +
+                "  `ThuP2` varchar(1) DEFAULT '',\n" +
+                "  `ThuP3` varchar(1) DEFAULT '',\n" +
+                "  `ThuP4` varchar(1) DEFAULT '',\n" +
+                "  `ThuP5` varchar(1) DEFAULT '',\n" +
+                "  `FriP1` varchar(1) DEFAULT '',\n" +
+                "  `FriP2` varchar(1) DEFAULT '',\n" +
+                "  `FriP3` varchar(1) DEFAULT '',\n" +
+                "  `FriP4` varchar(1) DEFAULT '',\n" +
+                "  `FriP5` varchar(1) DEFAULT '' \n" +
+                ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
+        state.execute(String.format(sql, weekStarting));
+    }
+
+    public static void addMerit(int studentID, int merits) throws SQLException
+    {
+        Statement state = Networker.connection.createStatement();
+
+        ResultSet resultSet = Networker.connection.createStatement().executeQuery(String.format("SELECT Merits FROM students WHERE StudentID=%d", studentID));
+
+        resultSet.next();
+
+        int newMeritValue = resultSet.getInt(1) + merits;
+
+        state.execute(String.format("UPDATE students SET Merits=%d WHERE StudentID=%d", newMeritValue, studentID));
+    }
+
+    public static void addDemerit(int studentID, int demerits) throws SQLException
+    {
+        Statement state = Networker.connection.createStatement();
+
+        ResultSet resultSet = Networker.connection.createStatement().executeQuery(String.format("SELECT Demerits FROM students WHERE StudentID=%d", studentID));
+
+        resultSet.next();
+
+        int newDemeritValue = resultSet.getInt(1) + demerits;
+
+        state.execute(String.format("UPDATE students SET Demerits=%d WHERE StudentID=%d", newDemeritValue, studentID));
     }
 }
