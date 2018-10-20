@@ -7,12 +7,14 @@ import javafx.scene.image.Image;
 
 import scripts.Day;
 import scripts.Week;
+import sun.nio.ch.Net;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class HandleRegister
 {
@@ -120,34 +122,41 @@ public class HandleRegister
 
         String sql = "CREATE TABLE `register%s` (\n" +
                 "  `StudentID` int(11) NOT NULL,\n" +
-                "  `MonP1` varchar(1) DEFAULT '',\n" +
-                "  `MonP2` varchar(1) DEFAULT '',\n" +
-                "  `MonP3` varchar(1) DEFAULT '',\n" +
-                "  `MonP4` varchar(1) DEFAULT '',\n" +
-                "  `MonP5` varchar(1) DEFAULT '',\n" +
-                "  `TueP1` varchar(1) DEFAULT '',\n" +
-                "  `TueP2` varchar(1) DEFAULT '',\n" +
-                "  `TueP3` varchar(1) DEFAULT '',\n" +
-                "  `TueP4` varchar(1) DEFAULT '',\n" +
-                "  `TueP5` varchar(1) DEFAULT '',\n" +
-                "  `WedP1` varchar(1) DEFAULT '',\n" +
-                "  `WedP2` varchar(1) DEFAULT '',\n" +
-                "  `WedP3` varchar(1) DEFAULT '',\n" +
-                "  `WedP4` varchar(1) DEFAULT '',\n" +
-                "  `WedP5` varchar(1) DEFAULT '',\n" +
-                "  `ThuP1` varchar(1) DEFAULT '',\n" +
-                "  `ThuP2` varchar(1) DEFAULT '',\n" +
-                "  `ThuP3` varchar(1) DEFAULT '',\n" +
-                "  `ThuP4` varchar(1) DEFAULT '',\n" +
-                "  `ThuP5` varchar(1) DEFAULT '',\n" +
-                "  `FriP1` varchar(1) DEFAULT '',\n" +
-                "  `FriP2` varchar(1) DEFAULT '',\n" +
-                "  `FriP3` varchar(1) DEFAULT '',\n" +
-                "  `FriP4` varchar(1) DEFAULT '',\n" +
-                "  `FriP5` varchar(1) DEFAULT '' \n" +
+                "  `MonP1` varchar(1) DEFAULT ' ',\n" +
+                "  `MonP2` varchar(1) DEFAULT ' ',\n" +
+                "  `MonP3` varchar(1) DEFAULT ' ',\n" +
+                "  `MonP4` varchar(1) DEFAULT ' ',\n" +
+                "  `MonP5` varchar(1) DEFAULT ' ',\n" +
+                "  `TueP1` varchar(1) DEFAULT ' ',\n" +
+                "  `TueP2` varchar(1) DEFAULT ' ',\n" +
+                "  `TueP3` varchar(1) DEFAULT ' ',\n" +
+                "  `TueP4` varchar(1) DEFAULT ' ',\n" +
+                "  `TueP5` varchar(1) DEFAULT ' ',\n" +
+                "  `WedP1` varchar(1) DEFAULT ' ',\n" +
+                "  `WedP2` varchar(1) DEFAULT ' ',\n" +
+                "  `WedP3` varchar(1) DEFAULT ' ',\n" +
+                "  `WedP4` varchar(1) DEFAULT ' ',\n" +
+                "  `WedP5` varchar(1) DEFAULT ' ',\n" +
+                "  `ThuP1` varchar(1) DEFAULT ' ',\n" +
+                "  `ThuP2` varchar(1) DEFAULT ' ',\n" +
+                "  `ThuP3` varchar(1) DEFAULT ' ',\n" +
+                "  `ThuP4` varchar(1) DEFAULT ' ',\n" +
+                "  `ThuP5` varchar(1) DEFAULT ' ',\n" +
+                "  `FriP1` varchar(1) DEFAULT ' ',\n" +
+                "  `FriP2` varchar(1) DEFAULT ' ',\n" +
+                "  `FriP3` varchar(1) DEFAULT ' ',\n" +
+                "  `FriP4` varchar(1) DEFAULT ' ',\n" +
+                "  `FriP5` varchar(1) DEFAULT ' ' \n" +
                 ") ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
         state.execute(String.format(sql, weekStarting));
+
+        ResultSet result = Networker.connection.createStatement().executeQuery("SELECT StudentID FROM students");
+
+        while (result.next())
+        {
+            Networker.connection.createStatement().execute(String.format("INSERT INTO register%s (StudentID) VALUES (%d)", weekStarting, result.getInt(1)));
+        }
     }
 
     public static void addMerit(int studentID, int merits) throws SQLException
@@ -167,12 +176,32 @@ public class HandleRegister
     {
         Statement state = Networker.connection.createStatement();
 
-        ResultSet resultSet = Networker.connection.createStatement().executeQuery(String.format("SELECT Demerits FROM students WHERE StudentID=%d", studentID));
+        ResultSet resultSet = Networker.connection.createStatement().executeQuery(String.format("SELECT Dmerits FROM students WHERE StudentID=%d", studentID));
 
         resultSet.next();
 
         int newDemeritValue = resultSet.getInt(1) + demerits;
 
-        state.execute(String.format("UPDATE students SET Demerits=%d WHERE StudentID=%d", newDemeritValue, studentID));
+        state.execute(String.format("UPDATE students SET Dmerits=%d WHERE StudentID=%d", newDemeritValue, studentID));
+    }
+
+    public static LinkedHashMap[] getMeritsAndDemerits(String classID) throws SQLException
+    {
+        LinkedHashMap[] values = new LinkedHashMap[2];
+        LinkedHashMap merits = new LinkedHashMap();
+        LinkedHashMap demerits = new LinkedHashMap();
+
+        ResultSet results = Networker.connection.createStatement().executeQuery(String.format("SELECT * FROM students WHERE Class='%s'", classID));
+
+        while (results.next())
+        {
+            demerits.put(String.format("%s, %s", results.getString(3), results.getString(2)), results.getFloat(7));
+            merits.put(String.format("%s, %s", results.getString(3), results.getString(2)), results.getFloat(6));
+        }
+
+        values[0] = merits;
+        values[1] = demerits;
+
+        return values;
     }
 }

@@ -11,11 +11,11 @@ public class Main extends Application
 	public void start(Stage stage) throws Exception
 	{
 		Networker.initiateConnection();
-		Parent root = FXMLLoader.load(getClass().getResource("fxml/Login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("fxml/Register.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
 		stage.setTitle("Registration");
-		stage.setResizable(false);
+		//stage.setResizable(false);
 		stage.show();
 	}
 

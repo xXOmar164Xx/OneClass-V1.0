@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Day
 {
     private String day;
+    private ArrayList<String> periods;
 
     private String p1;
     private String p2;
@@ -14,7 +15,7 @@ public class Day
 
     public Day(ArrayList<String> student)
     {
-        //this.id = student.get(0);
+        this.periods = student;
         this.p1 = student.get(0);
         this.p2 = student.get(1);
         this.p3 = student.get(2);
@@ -31,6 +32,14 @@ public class Day
         this.p3 = p3;
         this.p4 = p4;
         this.p5 = p5;
+    }
+
+    public ArrayList<String> getPeriods() {
+        return periods;
+    }
+
+    public void setPeriods(ArrayList<String> periods) {
+        this.periods = periods;
     }
 
     public String getDay() {

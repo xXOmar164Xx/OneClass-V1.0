@@ -6,6 +6,7 @@ public class Week
 {
     private int id;
     private String name;
+    private ArrayList<Day> days;
 
     private Day monday;
     private String mp1;
@@ -46,7 +47,7 @@ public class Week
     {
         this.name = name;
         this.id = id;
-
+        this.days = days;
 
         this.monday = days.get(0);
         this.monday.setDay("Mon");

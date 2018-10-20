@@ -12,6 +12,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import scripts.DataRetriever;
 import scripts.Week;
 import windows.Popup;
 
@@ -19,7 +20,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Year;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.*;
 
 public class RegisterController
 {
@@ -35,6 +36,8 @@ public class RegisterController
 
     public void initialize()
     {
+        //HandleRegister.createWeekTable(getWeekStarting());
+
         table.getSelectionModel().setCellSelectionEnabled(true);
 
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -97,7 +100,6 @@ public class RegisterController
     {
         try
         {
-            //HandleRegister.createWeekTable(getWeekStarting());
             table.setItems(HandleRegister.retrieveWeeksRegister(getWeekStarting(), classPicker.getValue().toString()));
         }
         catch (Exception e)
@@ -119,6 +121,7 @@ public class RegisterController
             studentProperties.getItems().set(4, a.get(4));
             studentProperties.getItems().set(5, a.get(5));
             studentProperties.getItems().set(6, a.get(6));
+            Popup.DisplayWidget(new VBox(new HBox(DataRetriever.getMeritValues(classPicker.getValue().toString()), DataRetriever.getAttendance(getWeekStarting(), getSelectedStudents().get(0))), DataRetriever.getAttendanceValues(getWeekStarting(), classPicker.getValue().toString())));
         }
         catch (Exception e)
         {

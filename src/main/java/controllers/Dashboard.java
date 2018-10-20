@@ -26,7 +26,7 @@ public class Dashboard {
 
     public  void onClassesClicked(){
         ClearMain();
-        System.out.println("Classes Was Clicked");
+        LoadClasses();
     }
 
     public void onTimetableClicked(){
@@ -48,11 +48,6 @@ public class Dashboard {
         ClearMain();
         System.out.println("Database Management Was Clicked");
     }
-
-
-
-
-
 
     public void ClearMain(){
         BasePane.getChildren().clear();
@@ -108,6 +103,19 @@ public class Dashboard {
             BasePane.getChildren().add(root);
         } catch (IOException ex){
             Logger.getLogger(TimetableController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void LoadClasses()
+    {
+        try
+        {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/DashboardElements/ClassView.fxml"));
+            BasePane.getChildren().add(root);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 }

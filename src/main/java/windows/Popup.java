@@ -2,6 +2,7 @@ package windows;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,7 +20,7 @@ public class Popup
 		
 		VBox root = new VBox();
 		root.getStyleClass().add("back");
-		root.setPadding(new Insets(5, 5, 5, 5));
+		root.setPadding(new Insets(5));
 		root.setSpacing(5);
 
 		Label label = new Label(text);
@@ -36,6 +37,22 @@ public class Popup
 		scene.getStylesheets().add("/style/login.css");
 		stage.setScene(scene);
 		stage.setResizable(false);
+		stage.showAndWait();
+	}
+
+	public static void DisplayWidget(Parent root)
+	{
+		Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+
+		Button closeButton = new Button("Close");
+		closeButton.setOnAction(event -> stage.close());
+
+		VBox vbox = new VBox(5, root, closeButton);
+		vbox.setPadding(new Insets(5));
+		vbox.setAlignment(Pos.CENTER);
+
+		stage.setScene(new Scene(vbox));
 		stage.showAndWait();
 	}
 }

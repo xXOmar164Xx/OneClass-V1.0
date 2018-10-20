@@ -20,6 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.chart.LineChart?>
 <BorderPane fx:id="root" prefHeight="600.0" prefWidth="800.0" stylesheets="@../style/Register.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardElements.RegisterController">
 
     <top>
@@ -42,7 +43,7 @@
                 <Button onAction="#saveRegisterView" text="Save" />
                 <Button fx:id="resetButton" text="Reset Changes" />
                 <Button fx:id="addMeritButton" text="Add Merit" onAction="#addMerit"/>
-                <Button fx:id="addDemeritButton" text="Add Demerit" />
+                <Button fx:id="addDemeritButton" text="Add Demerit" onAction="#addDemerit"/>
             </HBox>
         </VBox>
     </top>
@@ -253,6 +254,8 @@
                 <String fx:value="Year Group: " />
                 <String fx:value="Merits: " />
                 <String fx:value="Dmerits: " />
+                <HBox>
+                </HBox>
             </ListView>
         </VBox>
     </right>

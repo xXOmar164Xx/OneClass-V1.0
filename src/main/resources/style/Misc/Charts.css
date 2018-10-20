@@ -1,0 +1,63 @@
+
+/*
+ ===================
+ = XY Chart Styles =
+ ===================
+*/
+
+* {
+    -fx-grid-lines: #bec5e2;
+    -fx-odd-row-fill: #eaeaea;
+    -fx-label: #7c86ad;
+}
+
+.axis
+{
+    -fx-tick-label-fill: -fx-label;
+    -fx-font-family: Tahoma;
+    -fx-stroke: -fx-grid-lines;
+}
+
+.axis-label { -fx-text-fill: -fx-label; }
+
+.axis-tick-mark, .axis-minor-tick-mark { -fx-stroke: -fx-grid-lines; }
+
+.chart-vertical-grid-lines   { -fx-stroke: -fx-grid-lines; }
+.chart-horizontal-grid-lines { -fx-stroke: -fx-grid-lines; }
+
+.chart-alternative-row-fill  { -fx-fill: -fx-odd-row-fill; }
+
+/*
+ =====================
+ = Line Chart Styles =
+ =====================
+*/
+
+* {
+    -fx-default-line-one: #e9967a;
+    -fx-default-line-two: #f0e68c;
+    -fx-default-line-three: #dda0dd;
+}
+
+.default-color0.chart-series-line { -fx-stroke: -fx-default-line-one;   }
+.default-color1.chart-series-line { -fx-stroke: -fx-default-line-two;   }
+.default-color2.chart-series-line { -fx-stroke: -fx-default-line-three; }
+
+.default-color0.chart-line-symbol { -fx-background-color: -fx-default-line-one, white;   }
+.default-color1.chart-line-symbol { -fx-background-color: -fx-default-line-two, white;   }
+.default-color2.chart-line-symbol { -fx-background-color: -fx-default-line-three, white; }
+
+/*
+ ============================
+ = Stacked Bar Chart Styles =
+ ============================
+*/
+
+* {
+    -fx-default-bar-color1: #9bf24b;
+    -fx-default-bar-color2: #f75b5b;
+}
+
+
+.default-color0.chart-bar { -fx-bar-fill: -fx-default-bar-color1; }
+.default-color1.chart-bar { -fx-bar-fill: -fx-default-bar-color2; }
