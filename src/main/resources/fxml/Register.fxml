@@ -44,6 +44,7 @@
                 <Button fx:id="resetButton" text="Reset Changes" />
                 <Button fx:id="addMeritButton" text="Add Merit" onAction="#addMerit"/>
                 <Button fx:id="addDemeritButton" text="Add Demerit" onAction="#addDemerit"/>
+                <Button text="Info" onAction="#getInfo"/>
             </HBox>
         </VBox>
     </top>

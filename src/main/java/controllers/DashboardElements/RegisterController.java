@@ -36,7 +36,12 @@ public class RegisterController
 
     public void initialize()
     {
-        //HandleRegister.createWeekTable(getWeekStarting());
+        try {
+            //HandleRegister.createWeekTable(getWeekStarting());
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         table.getSelectionModel().setCellSelectionEnabled(true);
 
@@ -121,7 +126,6 @@ public class RegisterController
             studentProperties.getItems().set(4, a.get(4));
             studentProperties.getItems().set(5, a.get(5));
             studentProperties.getItems().set(6, a.get(6));
-            Popup.DisplayWidget(new VBox(new HBox(DataRetriever.getMeritValues(classPicker.getValue().toString()), DataRetriever.getAttendance(getWeekStarting(), getSelectedStudents().get(0))), DataRetriever.getAttendanceValues(getWeekStarting(), classPicker.getValue().toString())));
         }
         catch (Exception e)
         {
@@ -216,5 +220,16 @@ public class RegisterController
                 HandleRegister.addDemerit(studentId, 1);
         }
         catch (SQLException e) { e.printStackTrace(); }
+    }
+    @FXML private void getInfo()
+    {
+        try
+        {
+            Popup.DisplayWidget(new VBox(new HBox(DataRetriever.getMeritValues(classPicker.getValue().toString()), DataRetriever.getAttendance(getWeekStarting(), getSelectedStudents().get(0))), DataRetriever.getAttendanceValues(getWeekStarting(), classPicker.getValue().toString())));
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

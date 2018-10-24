@@ -87,4 +87,6 @@ public class DataRetriever
 
         return ChartGenerator.createBarChart("Attendance", "Type", "Amount", data);
     }
+
+
 }
